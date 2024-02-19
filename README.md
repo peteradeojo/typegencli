@@ -53,4 +53,6 @@ type Cat = {
 It would also output to a `typegen/Cat.ts` file in your project directory
 
 ## Demo Video
-Watch the demo [here](https://youtube.com/)
+Watch the demo
+
+https://twitter.com/i/status/1759724420602491141
