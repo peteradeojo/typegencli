@@ -1,3 +1,0 @@
-type Bolu = {
-	name: string;
-};
