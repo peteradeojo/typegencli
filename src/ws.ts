@@ -92,10 +92,8 @@ export const sendData: DeliveryFunc = (
 
 				socket.send(
 					JSON.stringify({
-						name: 'Bolu',
-						data: {
-							name: 'Bolu',
-						},
+						name,
+						data,
 					})
 				);
 			});
