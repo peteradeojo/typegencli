@@ -22,6 +22,7 @@ export const Server: TServer = (port: number) => {
 		socket.on('message', (data, isBinary) => {
 			const body = JSON.parse(data.toString());
 			const generated = `type ${body.name} = ` + generateType(body.data);
+			console.log(`\n${generated}\n`);
 			socket.send(JSON.stringify({ data: generated, directive: 'print' }), {
 				binary: isBinary,
 			});
