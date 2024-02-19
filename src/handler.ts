@@ -84,8 +84,6 @@ export default class RequestHandler {
 	handle(): Response {
 		const request = this.buildRequest();
 
-		console.log(request);
-
 		if (request.method !== 'POST') {
 			this.setStatus(400);
 			return this.outgoingResponse;
