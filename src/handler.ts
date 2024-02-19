@@ -10,6 +10,7 @@ type RequestParam = { [key: string]: string };
 type Request = {
 	queries?: ParsedUrlQuery;
 	body: any;
+	method?: string;
 	url?: UrlWithParsedQuery;
 	params: RequestParam[];
 };
@@ -62,6 +63,7 @@ export default class RequestHandler {
 			queries: this.url?.query,
 			body: this.requestBody,
 			url: this.url,
+			method: this.request.method,
 			params: [],
 		};
 	}
@@ -81,6 +83,13 @@ export default class RequestHandler {
 
 	handle(): Response {
 		const request = this.buildRequest();
+
+		console.log(request);
+
+		if (request.method !== 'POST') {
+			this.setStatus(400);
+			return this.outgoingResponse;
+		}
 
 		try {
 			this.validate();
