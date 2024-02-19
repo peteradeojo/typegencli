@@ -1,0 +1,22 @@
+{
+  "name": "typegencli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.0.0",
+    "express": "^4.18.2",
+    "figlet": "^1.7.0",
+    "joi": "^17.12.1"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "start": "ts-node src/index.ts",
+    "dev": "ts-node-dev --clear --respawn src/index.ts"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.5.8",
+    "@types/node": "^20.11.19",
+    "typescript": "^5.3.3"
+  }
+}
