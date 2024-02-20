@@ -86,7 +86,7 @@ export class Typegen {
 	private nestedObject(obj: any) {
 		const c = checkIsArray(obj);
 		if (c !== 0) {
-			return false;
+			return [];
 		}
 
 		const nests = [];
@@ -96,57 +96,41 @@ export class Typegen {
 			if (c == 0) nests.push(i);
 		}
 
-		return nests.length > 0 ? nests : false;
+		return nests; //.length > 0 ? nests : false;
 	}
 
 	discovery(data: any, name?: string): any {
 		let d: any = {};
-		if (checkIsArray(data) === 1) {
-			data.forEach((datum: any) => {
-				d = { ...d, ...datum };
-			});
-			// this.discovery(data[0], name);
-			// return;
-		} else {
-			d = data;
+		switch (checkIsArray(data)) {
+			case 1:
+				data.forEach((datum: any) => {
+					d = { ...d, ...datum };
+				});
+
+				this.discovery(d, name);
+				return;
+			case -1:
+			case 0:
+			case 'null':
+			default:
+				d = data;
 		}
 
 		const nests = this.nestedObject(d);
-		if (nests) {
-			nests.forEach((nest) => {
-				this.discovery(d[nest], nest);
-				d[nest] = 'discovered:' + nest;
-			});
+		nests.forEach((nest) => {
+			this.discovery(d[nest], nest);
+			d[nest] = 'discovered:' + nest;
+		});
 
-			this.discovery(d, name);
-		} else {
-			this.discoveredTypes.add({
-				name: name || String(this.discoveredTypes.size + 1),
-				src: d,
-			});
-		}
-	}
-
-	generateFromObject(obj: { [key: string]: any }) {}
-
-	generate(data: any, name?: string): any {
-		// console.log(data, name);
-		let t = '{\n';
-		for (let i of Object.keys(data)) {
-			// console.log(i);
-			const cx = {
-				name: i,
-				src: data[i],
-			};
-
-			console.log(cx);
-
-			console.log(this.discoveredTypes.has(cx));
-		}
+		this.discoveredTypes.add({
+			name: name || String(this.discoveredTypes.size + 1),
+			src: d,
+		});
 	}
 
 	resolveTypes(data: any) {
 		let t = '{\n';
+		console.log(data)
 		for (let i of Object.keys(data)) {
 			if (typeof data[i] == 'string') {
 				if (data[i].includes('discovered:')) {
@@ -155,6 +139,8 @@ export class Typegen {
 				} else {
 					t += `${i}: ${generateType(data[i])};\n`;
 				}
+			} else {
+				t += `${i}: ${generateType(data[i])};\n`;
 			}
 		}
 		t += '}';
