@@ -3,11 +3,12 @@ import { DeliveryFunc, TServer } from './server';
 import PromptSync from 'prompt-sync';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 
-import { generateType } from './generator';
+import { generateType, Typegen } from './generator';
 
 let wss: WebSocketServer | undefined = undefined;
 export const Server: TServer = (port: number) => {
 	const prompt = PromptSync();
+	const generator = new Typegen();
 
 	wss = new WebSocketServer({
 		port,
@@ -21,7 +22,8 @@ export const Server: TServer = (port: number) => {
 
 		socket.on('message', (data, isBinary) => {
 			const body = JSON.parse(data.toString());
-			const generated = `type ${body.name} = ` + generateType(body.data);
+			// const generated = `type ${body.name} = ` + generateType(body.data);
+			const generated = generator.resolve(body.data, body.name);
 			console.log(`\n${generated}\n`);
 			socket.send(JSON.stringify({ data: generated, directive: 'print' }), {
 				binary: isBinary,
@@ -63,9 +65,7 @@ export const sendData: DeliveryFunc = (
 				mkdirSync('./typegen');
 			}
 			try {
-				writeFileSync(`./typegen/${name}.ts`, gen, {
-					// flag: ""
-				});
+				writeFileSync(`./typegen/${name}.ts`, gen);
 			} catch (err) {
 				console.error(err);
 			}

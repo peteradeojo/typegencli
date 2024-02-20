@@ -6,7 +6,7 @@ export type TServer = (port: number) => void;
 export type DeliveryFunc = (
 	port: number,
 	cb?: () => boolean
-) => (name: string, data: string) => void;
+) => (name: string, data: any) => void;
 
 export const Server: TServer = (port: Number) => {
 	const server = createServer();
