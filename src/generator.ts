@@ -109,9 +109,6 @@ export class Typegen {
 
 				this.discovery(d, name);
 				return;
-			case -1:
-			case 0:
-			case 'null':
 			default:
 				d = data;
 		}
