@@ -459,11 +459,6 @@ path-to-regexp@0.1.7:
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
   integrity sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ==
 
-prettier@^3.2.5:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.2.5.tgz#e52bc3090586e824964a8813b09aba6233b28368"
-  integrity sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==
-
 prompt-sync-history@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/prompt-sync-history/-/prompt-sync-history-1.0.1.tgz#d02edf18cc03b8932867156c292274ba2c0050fd"
@@ -602,12 +597,10 @@ type-is@~1.6.18:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typegen-generator@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/typegen-generator/-/typegen-generator-0.0.3.tgz#ff0577b52d9e6ea13e300837e22da5ed719902e6"
-  integrity sha512-Dg52Y2alTctu7bLKdTeDXQSO2asxBlOHbvGawWjNHW02vFbB7PW44C0mRsY17lkJU1arLXWuY5eqmSQUeCzevg==
-  dependencies:
-    prettier "^3.2.5"
+typegen-generator@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/typegen-generator/-/typegen-generator-1.2.0.tgz#4c869253c8b349c759dcfd0a8a7f30692446c87c"
+  integrity sha512-4pwSqjNdDmhZPIAyLsxSP2RU2jpx1PhhzbAvXYYIkicL92K0BJls5mtshqYl1uT4MfXbnGutSIx1UYqdqu2xdA==
 
 typescript@^5.3.3:
   version "5.3.3"
