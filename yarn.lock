@@ -597,10 +597,10 @@ type-is@~1.6.18:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typegen-generator@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/typegen-generator/-/typegen-generator-1.2.0.tgz#4c869253c8b349c759dcfd0a8a7f30692446c87c"
-  integrity sha512-4pwSqjNdDmhZPIAyLsxSP2RU2jpx1PhhzbAvXYYIkicL92K0BJls5mtshqYl1uT4MfXbnGutSIx1UYqdqu2xdA==
+typegen-generator@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/typegen-generator/-/typegen-generator-1.2.3.tgz#eee6e2dfa3697bcb49028043b5d4e7b574842576"
+  integrity sha512-U0BLQySt7kqmWSX1dZKQ08l2CNHCfhy8GMEL0XogZUYXvs98q6DIS2iwo6UDJKXWg+63EUbW+DwWLStEAmiVPw==
 
 typescript@^5.3.3:
   version "5.3.3"
