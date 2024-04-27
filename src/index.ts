@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { Server, sendData } from './ws';
+import { Server, sendData } from './tcp';
 import figlet from 'figlet';
 
 if (require.main === module) {

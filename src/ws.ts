@@ -51,7 +51,7 @@ export const Server: TServer = (port: number) => {
 
 export const sendData: DeliveryFunc = (
 	port: number,
-	cb?: (data: any) => boolean
+	cb?: (data: any) => boolean | null
 ) => {
 	const socket = new WebSocket(`http://localhost:${port}`);
 
@@ -71,11 +71,13 @@ export const sendData: DeliveryFunc = (
 		});
 
 	return (name: string, data: string) => {
+		console.log()
 		try {
 			socket.on('error', console.error);
 			socket.on('open', () => {
 				socket.on('message', (data, isBinary) => {
 					const message = JSON.parse(data.toString());
+					console.log(message);
 
 					switch (message.directive) {
 						case 'save':
@@ -88,6 +90,10 @@ export const sendData: DeliveryFunc = (
 
 					socket.close();
 				});
+
+				socket.on('connect', () => {
+					console.log('connected');
+				})
 
 				socket.send(
 					JSON.stringify({

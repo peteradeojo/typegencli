@@ -3,3 +3,4 @@ dist
 .token
 typegen
 src/test.ts
+coverage

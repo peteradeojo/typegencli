@@ -12,6 +12,6 @@
   },
   "exclude": [
     "typegen",
-    "src/test.ts"
+    "tests/index.test.ts"
   ]
 }
